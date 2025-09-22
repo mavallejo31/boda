@@ -350,29 +350,17 @@ Confirmar asistencia</h2>
     }, 1000);
 
 
-document.getElementById("rsvpForm").addEventListener("submit", function(e){
-  e.preventDefault();
+    // Confirmación WhatsApp
+    document.getElementById("rsvpForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const adultos = document.getElementById("adultos").value;
+      const ninos = document.getElementById("ninos").value;
+      const nombre = document.getElementById("nombre").value;
 
-  const adultos = document.getElementById("adultos").value;
-  const ninos = document.getElementById("ninos").value;
-  const nombre = document.getElementById("nombre").value;
-
-  // URL de tu Web App
-  const webAppUrl = "https://script.google.com/macros/s/AKfycbwFXvvvLaQM7oYV-_-fso4UGxtzx8uZ69G95VihijX-dbk1VfbCqYrdq-b86ofb-Qh3Ew/exec";
-
-  // Construir URL con parámetros
-  const urlConDatos = `${webAppUrl}?nombre=${encodeURIComponent(nombre)}&adultos=${adultos}&ninos=${ninos}`;
-
-  // Enviar los datos abriendo la URL en otra pestaña
-  window.open(urlConDatos, "_blank");
-
-  // Abrir WhatsApp con mensaje
-  const mensajeWhats = `Hola, confirmo asistencia a la boda de Marilyn & Christian. Invitado: ${nombre}, Adultos: ${adultos}, Niños: ${ninos}`;
-  window.open(`https://wa.me/573158310708?text=${encodeURIComponent(mensajeWhats)}`, "_blank");
-
-  // Mensaje de confirmación en la página
-  alert("Confirmación enviada y registrada. ¡Gracias!");
-});
+      const mensaje = `Hola, confirmo asistencia a la boda de Marilyn & Christian. Invitado: ${nombre}, Adultos: ${adultos}, Niños: ${ninos}`;
+      const url = `https://wa.me/573158310708?text=${encodeURIComponent(mensaje)}`; 
+      window.open(url, "_blank");
+    });
 
     // Música de fondo
     const audio = document.getElementById('musicaFondo');
@@ -401,4 +389,5 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e){
   </script>
 </body>
 </html>
+
 
