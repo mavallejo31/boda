@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boda Marilyn & Christian</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+
+
   <style>
     body {
       margin: 0;
@@ -23,59 +27,15 @@
       overflow: hidden;
     }
 
-    header h1 {
-      font-size: 2.3em;
-      margin: 0;
-    }
+header h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3em;
+  margin: 0;
+}
+
     header p {
       font-size: 1.2em;
       margin-top: 10px;
-    }
-
-    /* Avatares animados */
-    .avatars {
-      position: relative;
-      margin-top: 20px;
-      height: 280px;
-    }
-
-    .avatar {
-      position: absolute;
-      bottom: 0;
-      width: 150px;
-    }
-
-    .novia {
-      left: -200px;
-      animation: entrarNovia 3s forwards;
-    }
-
-    .novio {
-      right: -200px;
-      animation: entrarNovio 3s forwards;
-    }
-
-    @keyframes entrarNovia {
-      to { left: 40%; }
-    }
-    @keyframes entrarNovio {
-      to { right: 40%; }
-    }
-
-    /* Corazón cuando se encuentran */
-    .corazon {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2.5em;
-      opacity: 0;
-      animation: aparecerCorazon 2s forwards;
-      animation-delay: 3s;
-    }
-
-    @keyframes aparecerCorazon {
-      to { opacity: 1; transform: translateX(-50%) scale(1.2); }
     }
 
     /* Contador */
@@ -153,44 +113,36 @@
     <p>¡Nos casamos!</p>
     <p><strong>1 de noviembre de 2025</strong></p>
 
+    <!-- Video animación -->
+    <section class="video-banner">
+      <video autoplay loop muted playsinline controls
+             style="max-width: 350px; width: 100%; border-radius: 16px; display: block; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+        <source src="https://github.com/mavallejo31/boda/raw/main/animacion.mp4" type="video/mp4">
+        Tu navegador no soporta video en HTML5.
+      </video>
+    </section>
 
-
-    <!-- Avatares animados -->
-<!--
-    <div class="avatars">
-      <img src="novia.PNG" alt="Novia" class="avatar novia">
-      <img src="novio.PNG" alt="Novio" class="avatar novio">
-      <div class="corazon">❤️</div>
-    </div>
--->
-
-<section class="video-banner">
-  <video autoplay loop muted playsinline 
-         style="max-width: 350px; width: 100%; border-radius: 16px; display: block; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    <source src="https://raw.githubusercontent.com/mavallejo31/boda/main/animacion.mp4" type="video/mp4">
-    Tu navegador no soporta video en HTML5.
-  </video>
-</section>
-
-
-
+    <!-- Contador regresivo -->
     <div id="contador"></div>
   </header>
 
+  <!-- Ceremonia -->
   <section class="card">
     <h2>📖 Ceremonia Religiosa</h2>
     <p><strong>Hora:</strong> 2:30 p.m.</p>
     <p><strong>Lugar:</strong> Capilla Casa de Ejercicios de San Ignacio</p>
-    <a class="btn" href="https://maps.app.goo.gl/NzjQGXx6pZ3G9nb88" target="_blank">📍 Ver en mapa</a>
+    <a class="btn" href="https://www.google.com/maps/place/Casa+de+Ejercicios+-+San+Ignacio/@1.2181587,-77.287693,17z/data=!3m1!4b1!4m6!3m5!1s0x8e2ed480473f8215:0xf3a48526882928d9!8m2!3d1.2181587!4d-77.2851181!16s%2Fg%2F1tf61b7c?entry=ttu&g_ep=EgoyMDI1MDkxNy4wIKXMDSoASAFQAw%3D%3D?entry=ttu" target="_blank">📍 Ver en mapa</a>
   </section>
 
+  <!-- Recepción -->
   <section class="card">
     <h2>🎉 Recepción</h2>
     <p><strong>Hora:</strong> 5:00 p.m.</p>
     <p><strong>Lugar:</strong> Centro Sinergia vía Chapalito</p>
-    <a class="btn" href="https://maps.app.goo.gl/sVu2v6WkM8P7QdPo8" target="_blank">📍 Ver en mapa</a>
+    <a class="btn" href="https://www.google.com/maps/place/Centro+Sinergia/@1.186912,-77.2911592,17z/data=!4m14!1m7!3m6!1s0x8e2ed355d083cbcb:0xec1e97a08fe3aabb!2sCentro+Sinergia!8m2!3d1.186912!4d-77.2911592!16s%2Fg%2F1hdzbv5hr!3m5!1s0x8e2ed355d083cbcb:0xec1e97a08fe3aabb!8m2!3d1.186912!4d-77.2911592!16s%2Fg%2F1hdzbv5hr?entry=ttu" target="_blank">📍 Ver en mapa</a>
   </section>
 
+  <!-- Confirmación -->
   <section class="card">
     <h2>✨ Confirmar asistencia</h2>
     <form id="rsvpForm">
@@ -239,7 +191,7 @@
          <div>${segundos}<br><small>Seg</small></div>`;
     }, 1000);
 
-    // Confirmación
+    // Confirmación WhatsApp
     document.getElementById("rsvpForm").addEventListener("submit", function(e){
       e.preventDefault();
       const adultos = document.getElementById("adultos").value;
@@ -249,7 +201,7 @@
       const mensaje = `Hola, confirmo asistencia a la boda de Marilyn & Christian. Invitado: ${nombre}, Adultos: ${adultos}, Niños: ${ninos}`;
       
       // WhatsApp (reemplaza con tu número en formato internacional)
-      const url = `https://wa.me/573158310708?text=${encodeURIComponent(mensaje)}`;
+      const url = `https://wa.me/573158310708?text=${encodeURIComponent(mensaje)}`; 
       window.open(url, "_blank");
     });
   </script>
