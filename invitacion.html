@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boda Marilyn & Christian</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #faf7f7;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background: linear-gradient(135deg, #5c0a0d, #8c1c1c);
+      color: white;
+      padding: 40px 20px 80px 20px;
+      border-bottom-left-radius: 50% 10%;
+      border-bottom-right-radius: 50% 10%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.3em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    /* Avatares animados */
+    .avatars {
+      position: relative;
+      margin-top: 20px;
+      height: 280px;
+    }
+
+    .avatar {
+      position: absolute;
+      bottom: 0;
+      width: 150px;
+    }
+
+    .novia {
+      left: -200px;
+      animation: entrarNovia 3s forwards;
+    }
+
+    .novio {
+      right: -200px;
+      animation: entrarNovio 3s forwards;
+    }
+
+    @keyframes entrarNovia {
+      to { left: 40%; }
+    }
+    @keyframes entrarNovio {
+      to { right: 40%; }
+    }
+
+    /* Corazón cuando se encuentran */
+    .corazon {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2.5em;
+      opacity: 0;
+      animation: aparecerCorazon 2s forwards;
+      animation-delay: 3s;
+    }
+
+    @keyframes aparecerCorazon {
+      to { opacity: 1; transform: translateX(-50%) scale(1.2); }
+    }
+
+    /* Contador */
+    #contador {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    #contador div {
+      background: #5c0a0d;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      min-width: 60px;
+    }
+
+    .card {
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 400px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #5c0a0d;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 15px 5px;
+      padding: 10px 20px;
+      background: #8c1c1c;
+      color: white;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #5c0a0d;
+    }
+
+    /* Formulario */
+    form {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    footer {
+      margin: 30px;
+      font-size: 0.9em;
+      color: #777;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💍 Marilyn & Christian</h1>
+    <p>¡Nos casamos!</p>
+    <p><strong>1 de noviembre de 2025</strong></p>
+
+
+
+    <!-- Avatares animados -->
+<!--
+    <div class="avatars">
+      <img src="novia.PNG" alt="Novia" class="avatar novia">
+      <img src="novio.PNG" alt="Novio" class="avatar novio">
+      <div class="corazon">❤️</div>
+    </div>
+-->
+
+<section class="video-banner">
+  <video autoplay loop muted playsinline 
+         style="max-width: 350px; width: 100%; border-radius: 16px; display: block; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <source src="https://raw.githubusercontent.com/mavallejo31/boda/main/animacion.mp4" type="video/mp4">
+    Tu navegador no soporta video en HTML5.
+  </video>
+</section>
+
+
+
+    <div id="contador"></div>
+  </header>
+
+  <section class="card">
+    <h2>📖 Ceremonia Religiosa</h2>
+    <p><strong>Hora:</strong> 2:30 p.m.</p>
+    <p><strong>Lugar:</strong> Capilla Casa de Ejercicios de San Ignacio</p>
+    <a class="btn" href="https://maps.app.goo.gl/NzjQGXx6pZ3G9nb88" target="_blank">📍 Ver en mapa</a>
+  </section>
+
+  <section class="card">
+    <h2>🎉 Recepción</h2>
+    <p><strong>Hora:</strong> 5:00 p.m.</p>
+    <p><strong>Lugar:</strong> Centro Sinergia vía Chapalito</p>
+    <a class="btn" href="https://maps.app.goo.gl/sVu2v6WkM8P7QdPo8" target="_blank">📍 Ver en mapa</a>
+  </section>
+
+  <section class="card">
+    <h2>✨ Confirmar asistencia</h2>
+    <form id="rsvpForm">
+      <label>Adultos:
+        <select id="adultos">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </label>
+      <label>Niños:
+        <select id="ninos">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </label>
+      <input type="text" id="nombre" placeholder="Tu nombre">
+      <button type="submit" class="btn">💌 Confirmar</button>
+    </form>
+  </section>
+
+  <footer>
+    Con cariño, Marilyn & Christian 💕
+  </footer>
+
+  <script>
+    // Contador regresivo
+    const fechaBoda = new Date("Nov 1, 2025 14:30:00").getTime();
+    setInterval(function() {
+      const ahora = new Date().getTime();
+      const distancia = fechaBoda - ahora;
+
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+      document.getElementById("contador").innerHTML =
+        `<div>${dias}<br><small>Días</small></div>
+         <div>${horas}<br><small>Horas</small></div>
+         <div>${minutos}<br><small>Min</small></div>
+         <div>${segundos}<br><small>Seg</small></div>`;
+    }, 1000);
+
+    // Confirmación
+    document.getElementById("rsvpForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const adultos = document.getElementById("adultos").value;
+      const ninos = document.getElementById("ninos").value;
+      const nombre = document.getElementById("nombre").value;
+
+      const mensaje = `Hola, confirmo asistencia a la boda de Marilyn & Christian. Invitado: ${nombre}, Adultos: ${adultos}, Niños: ${ninos}`;
+      
+      // WhatsApp (reemplaza con tu número en formato internacional)
+      const url = `https://wa.me/573158310708?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
