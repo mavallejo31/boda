@@ -37,29 +37,78 @@ fecha-boda {
   letter-spacing: 1px;
 }
 
-
-    header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4em;
-      margin: 0;
-      letter-spacing: 2px;
+    header {
+    background: liner-gradient(135deg, #5c0a0d, #8c1c1c);
+    color: white;
+    padding: 50px 20px 100 px 20px;
+    border-bottom-left-radius: 50% 10%;
+    border-bottom-right-radius: 50% 10%;
+    position: relative;
+    overflow:hidden;
     }
 
-    header h2 {
-      font-family: 'Merriweather', serif;
-      font-style: italic;
-      font-size: 2em;
-      margin-top: 10px;
-    }
+@font-face {
+  font-family: 'HolyWingsFree';
+  src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff2') format('woff2'),
+       url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff') format('woff');
+}
 
-    .mensaje-bienvenida {
-      font-family: 'Merriweather', serif;
-      font-style: italic;
-      font-size: 1.0em;
-      margin: 20px 0 15px 0;
-      color: #fff;
-      line-height: 1.6;
-    }
+@font-face {
+  font-family: 'CorporateA';
+  src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/CorporateA-Regular.woff2') format('woff2'),
+       url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/CorporateA-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BelfastBold';
+  src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/Belfast-Bold.woff2') format('woff2'),
+       url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/Belfast-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+.titulo-principal {
+  font-family: 'HolyWingsFree', cursive, 'Great Vibes';
+  font-size: 5em;
+  color: #fff;
+  letter-spacing: 2px;
+  margin: 0;
+  font-weight: 300; /* intenta 200 o 100 si se ve más delgada */
+}
+
+.subtitulo-destacado {
+  font-family: 'BelfastBold', sans-serif;
+  font-size: 1.7em;
+  color: #fff;
+  font-weight: bold;
+}
+
+.subtitulo-destacado1 {
+  font-family: 'BelfastBold', sans-serif;
+  font-size: 1.4em;
+  color: #fff;
+  font-weight: normal;
+}
+
+
+.mensaje-bienvenida {
+  font-family: 'CorporateA', sans-serif;
+  font-size: 1.1em;
+  line-height: 1.1;
+  color: #fff;
+}
+
+
+.subtitulo {
+  font-family: 'CorporateA', sans-serif;
+  font-size: 1.5em;
+  line-height: 1.6;
+  color: #fff;
+}
+
 
     /* Contador regresivo */
     #contador {
@@ -161,13 +210,13 @@ fecha-boda {
 </head>
 <body>
   <header>
-    <h1>Marilyn & Christian</h1>
-    <h2>Nuestra Boda</h2>
+    <h1 class="titulo-principal">Marilyn y Christian</h1>
+    <h2 class="subtitulo-destacado">NUESTRA BODA</h2>
     <div class="mensaje-bienvenida">
       Nos llena de alegría compartir nuestro amor con ustedes.<br>
       Los invitamos a celebrar juntos este día especial 💖
     </div>
-    <p class="fecha-boda"><strong>1 de noviembre de 2025</strong></p>
+    <p class="subtitulo-destacado1">1 de noviembre de 2025</p>
 
     <!-- Video animación -->
     <section class="video-banner">
