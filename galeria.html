@@ -6,48 +6,105 @@
 <title>Galería Boda Marilyn & Christian</title>
 
 <style>
-/* Fuentes */
-@font-face { font-family: 'HolyWingsFree'; src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff2') format('woff2'); }
-@font-face { font-family: 'CorporateA'; src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/CorporateA-Regular.woff2') format('woff2'); }
-@font-face { font-family: 'BelfastBold'; src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/Belfast-Bold.woff2') format('woff2'); }
-
-/* Estilos generales */
-body {
-  margin:0; padding:20px;
-  font-family:'CorporateA', sans-serif;
-  background:#faf7f7;
-  color:#333;
-  text-align:center;
+/* ==================== Fuentes ==================== */
+@font-face {
+  font-family: 'HolyWingsFree';
+  src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff2') format('woff2'),
+       url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff') format('woff');
 }
+
+@font-face {
+  font-family: 'CorporateA';
+  src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/CorporateA-Regular.woff2') format('woff2'),
+       url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/CorporateA-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BelfastBold';
+  src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/Belfast-Bold.woff2') format('woff2'),
+       url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/Belfast-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* ==================== Estilos Generales ==================== */
+body {
+  margin: 0;
+  font-family: 'CorporateA', sans-serif;
+  background: #faf7f7;
+  color: #333;
+  text-align: center;
+}
+
 header {
   background: linear-gradient(135deg, #5c0a0d, #8c1c1c);
-  color:white;
-  padding:40px 20px 80px 20px;
-  border-bottom-left-radius:50% 10%;
-  border-bottom-right-radius:50% 10%;
+  color: white;
+  padding: 50px 20px 100px 20px;
+  border-bottom-left-radius: 50% 10%;
+  border-bottom-right-radius: 50% 10%;
+  position: relative;
+  overflow: hidden;
 }
-header h1 { font-family:'HolyWingsFree', cursive; font-size:4em; margin:0; }
-header h2 { font-family:'BelfastBold', sans-serif; color:#c9a66b; margin:10px 0 0 0; font-size:1.5em; }
-header p { font-family:'CorporateA', sans-serif; margin-top:10px; font-size:1.1em; }
 
+.titulo-principal {
+  font-family: 'HolyWingsFree', cursive;
+  font-size: 7em;
+  color: #fff;
+  letter-spacing: 2px;
+  margin: 0;
+  font-weight: 300;
+}
+
+.subtitulo-destacado1 {
+  font-family: 'BelfastBold', sans-serif;
+  font-size: 1.7em;
+  color: #c9a66b;
+  margin-top: 10px;
+}
+
+/* ==================== Sección Galería ==================== */
+section {
+  margin: 30px auto;
+  padding: 25px 20px;
+  max-width: 480px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+section h3 {
+  color: #5c0a0d;
+  font-family: 'BelfastBold', sans-serif;
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+section p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #555;
+}
 .btn-upload {
   display:inline-block;
-  background:#8c1c1c;
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: #8c1c1c;
   color:white;
-  padding:12px 25px;
   border-radius:30px;
   text-decoration:none;
   font-weight:600;
-  margin:20px 0;
+  cursor:pointer;
+  transition:0.3s;
   font-family:'CorporateA', sans-serif;
 }
+.btn-upload:hover { background:#5c0a0d; }
 
-/* Carrusel de miniaturas */
+/* ==================== Carrusel ==================== */
 .carousel-container {
   position: relative;
   overflow: hidden;
-  max-width: 100%;
-  margin: 0 auto 30px auto;
+  max-width: 90%;
+  margin: 20px auto 30px auto;
 }
 .carousel-track {
   display:flex;
@@ -55,29 +112,20 @@ header p { font-family:'CorporateA', sans-serif; margin-top:10px; font-size:1.1e
 }
 .thumbnail {
   flex: 0 0 auto;
-  width: 80px;
-  height: 80px;
-  margin: 0 5px;
-  border-radius:8px;
-  object-fit:cover;
-  cursor:pointer;
+  width: 120px;
+  height: 120px;
+  margin: 0 10px;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
   position: relative;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.thumbnail.more::after {
-  content: attr(data-more);
-  position: absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.6);
-  color:#fff;
-  font-size:16px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border-radius:8px;
+.thumbnail:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.3);
 }
-
-/* Botones */
 .carousel-btn {
   position:absolute;
   top:50%;
@@ -93,17 +141,40 @@ header p { font-family:'CorporateA', sans-serif; margin-top:10px; font-size:1.1e
 }
 .carousel-btn.left { left:5px; }
 .carousel-btn.right { right:5px; }
+
+/* ==================== Footer ==================== */
+footer {
+  margin: 40px 20px;
+  font-size: 1em;
+  color: #555;
+  line-height: 1.5;
+}
+footer a { color: #8c1c1c; text-decoration:none; font-weight:600; }
+footer a:hover { text-decoration: underline; }
+
+.agradecimiento-texto {
+  font-family: 'CorporateA', sans-serif;
+  font-size: 1.2em;
+  color: #8c1c1c;
+  display: block;
+  margin-top: 5px;
+}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Marilyn y Christian</h1>
-  <h2>GALERÍA DE RECUERDOS</h2>
-  <p>Queremos revivir este día tan especial a través de tus fotos 💕</p>
+  <h1 class="titulo-principal">Marilyn y Christian</h1>
+  <div class="subtitulo-destacado1">GALERÍA DE RECUERDOS</div>
 </header>
 
-<a class="btn-upload" href="https://drive.google.com/drive/folders/19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG" target="_blank">Agregar fotos</a>
+<section>
+  <h3>💖 ¡Comparte tus fotos con nosotros!</h3>
+  <p>Sube tus recuerdos a nuestro álbum compartido.<br>Queremos revivir este día tan especial a través de tus ojos. 📸</p>
+  <a class="btn-upload" href="https://drive.google.com/drive/folders/19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG?usp=sharing" target="_blank">
+    Subir mis fotos
+  </a>
+</section>
 
 <div class="carousel-container">
   <button class="carousel-btn left">&#10094;</button>
@@ -111,10 +182,16 @@ header p { font-family:'CorporateA', sans-serif; margin-top:10px; font-size:1.1e
   <button class="carousel-btn right">&#10095;</button>
 </div>
 
+<footer>
+  <p><a href="https://mavallejo31.github.io/boda/">⬅ Volver a la invitación</a></p>
+  <p class="agradecimiento-texto">¡Gracias por acompañarnos! 💕</p>
+</footer>
+
 <script>
 const API_KEY = 'AIzaSyDJGBRvLKdukuVxWXvuRImB-C9pk6ZVDZM';
 const FOLDER_ID = '19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG';
-const MAX_VISIBLE = 8;
+const MAX_VISIBLE = 12;  // más miniaturas visibles
+const ALBUM_LINK = "https://drive.google.com/drive/folders/19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG?usp=sharing";
 
 async function fetchFiles() {
   const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,mimeType,thumbnailLink,webContentLink)`;
@@ -129,24 +206,13 @@ async function fetchFiles() {
       for(let i=0;i<visibleCount;i++){
         const file = data.files[i];
         if(file.mimeType.startsWith('image/')){
-          const link = document.createElement('a');
-          link.href = `https://drive.google.com/uc?export=view&id=${file.id}`;
-          link.target = "_blank"; // abre en nueva pestaña
           const img = document.createElement('img');
           img.src = file.thumbnailLink || `https://drive.google.com/uc?export=view&id=${file.id}`;
           img.className = 'thumbnail';
           img.alt = file.name;
-          link.appendChild(img);
-          track.appendChild(link);
+          img.onclick = ()=> window.open(ALBUM_LINK, "_blank");
+          track.appendChild(img);
         }
-      }
-      // si hay más fotos
-      if(data.files.length>MAX_VISIBLE){
-        const more = document.createElement('div');
-        more.className='thumbnail more';
-        more.setAttribute('data-more', `+${data.files.length-MAX_VISIBLE}`);
-        more.onclick = ()=>window.open(`https://drive.google.com/uc?export=view&id=${data.files[MAX_VISIBLE].id}`, '_blank');
-        track.appendChild(more);
       }
     }
   } catch(err){
@@ -154,18 +220,18 @@ async function fetchFiles() {
   }
 }
 
-// Carrusel simple
+// Carrusel
 let scrollPos=0;
 const track = document.getElementById('carousel');
 document.querySelector('.carousel-btn.left').onclick = ()=>{
-  scrollPos -= 100; track.style.transform = `translateX(${scrollPos}px)`;
+  scrollPos -= 150; track.style.transform = `translateX(${scrollPos}px)`;
 };
 document.querySelector('.carousel-btn.right').onclick = ()=>{
-  scrollPos += 100; track.style.transform = `translateX(${scrollPos}px)`;
+  scrollPos += 150; track.style.transform = `translateX(${scrollPos}px)`;
 };
 
-// Inicia
 fetchFiles();
 </script>
+
 </body>
 </html>
