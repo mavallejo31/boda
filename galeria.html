@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galería - Marilyn & Christian</title>
 
-  <!-- Tipografía -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
@@ -20,52 +17,88 @@
     header {
       background: linear-gradient(135deg, #5c0a0d, #8c1c1c);
       color: white;
-      padding: 60px 20px;
+      padding: 50px 20px 100px 20px;
       border-bottom-left-radius: 50% 10%;
       border-bottom-right-radius: 50% 10%;
+      position: relative;
+      overflow: hidden;
     }
 
-    header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.5em;
-      margin: 0;
+    @font-face {
+      font-family: 'HolyWingsFree';
+      src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff2') format('woff2'),
+           url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'CorporateA';
+      src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/CorporateA-Regular.woff2') format('woff2'),
+           url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/CorporateA-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'BelfastBold';
+      src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/Belfast-Bold.woff2') format('woff2'),
+           url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/Belfast-Bold.woff') format('woff');
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    .titulo-principal {
+      font-family: 'HolyWingsFree', cursive;
+      font-size: 6em;
+      color: #fff;
       letter-spacing: 2px;
+      margin: 0;
+      font-weight: 300;
     }
 
-    header h2 {
-      font-family: 'Merriweather', serif;
-      font-style: italic;
-      font-size: 1.8em;
-      margin-top: 10px;
+    .subtitulo-destacado {
+      font-family: 'BelfastBold', sans-serif;
+      font-size: 1.7em;
+      color: #c9a66b;
+      font-weight: bold;
     }
 
-    section {
-      margin: 50px auto;
-      padding: 25px 20px;
-      max-width: 480px;
+    .mensaje-bienvenida {
+      font-family: 'CorporateA', sans-serif;
+      font-size: 1.2em;
+      line-height: 1.5;
+      color: #fff;
+      margin-top: 15px;
+    }
+
+    /* Tarjeta contenedora */
+    .card {
+      margin: 40px auto;
+      padding: 30px 25px;
+      max-width: 420px;
       background: white;
       border-radius: 18px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       animation: fadeIn 1.5s ease-in-out;
+      font-family: 'CorporateA', sans-serif;
     }
 
-    section h3 {
+    .card h2 {
       color: #5c0a0d;
-      font-family: 'Merriweather', serif;
-      font-size: 1.6em;
-      margin-bottom: 10px;
+      font-family: 'BelfastBold', sans-serif;
+      font-size: 1.7em;
+      margin-bottom: 15px;
     }
 
-    p {
+    .card p {
       font-size: 1.1em;
-      line-height: 1.6;
       color: #555;
+      line-height: 1.6;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 25px;
-      padding: 14px 28px;
+      margin-top: 20px;
+      padding: 12px 30px;
       background: #8c1c1c;
       color: white;
       border-radius: 30px;
@@ -73,6 +106,8 @@
       font-weight: 600;
       transition: 0.3s;
       cursor: pointer;
+      font-family: 'CorporateA', sans-serif;
+      font-size: 1.1em;
     }
 
     .btn:hover {
@@ -81,7 +116,18 @@
 
     footer {
       margin: 40px 20px;
-      color: #777;
+      color: #555;
+      font-family: 'CorporateA', sans-serif;
+    }
+
+    footer a {
+      color: #8c1c1c;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     @keyframes fadeIn {
@@ -92,23 +138,22 @@
 </head>
 <body>
   <header>
-    <h1>Marilyn & Christian</h1>
-    <h2>Galería de Recuerdos</h2>
+    <h1 class="titulo-principal">Marilyn & Christian</h1>
+    <h2 class="subtitulo-destacado">GALERÍA DE RECUERDOS</h2>
+    <div class="mensaje-bienvenida">
+      Queremos revivir este día tan especial a través de tus fotos 💕
+    </div>
   </header>
 
-  <section>
-    <h3>💖 ¡Comparte tus fotos con nosotros!</h3>
-    <p>
-      Sube tus recuerdos a nuestro álbum compartido.<br>
-      Queremos revivir este día tan especial a través de tus ojos. 📸
-    </p>
-    <a class="btn" href="https://drive.google.com/drive/folders/19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG?usp=sharing" target="_blank">
-      Subir mis fotos
-    </a>
+  <section class="card">
+    <h2>📷 ¡Comparte tus fotos!</h2>
+    <p>Sube tus recuerdos de la boda a nuestro álbum compartido.<br>
+       Nos encantará verlos y revivir cada momento especial.</p>
+    <a class="btn" href="https://drive.google.com/drive/folders/19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG?usp=sharing" target="_blank">Subir mis fotos</a>
   </section>
 
   <footer>
-    <p><a href="index.html" style="color:#8c1c1c; text-decoration:none; font-weight:600;">⬅ Volver a la invitación</a></p>
+    <p><a href="index.html">⬅ Volver a la invitación</a></p>
   </footer>
 </body>
 </html>
