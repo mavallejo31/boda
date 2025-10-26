@@ -135,7 +135,7 @@ const FOLDER_ID = '19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG';
 const MAX_VISIBLE = 8;
 
 async function fetchFiles() {
-  const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,mimeType,thumbnailLink,webContentLink)`;
+  const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,mimeType)`;
   try {
     const res = await fetch(url);
     const data = await res.json();
@@ -147,17 +147,15 @@ async function fetchFiles() {
       for(let i=0;i<visibleCount;i++){
         const file = data.files[i];
         if(file.mimeType.startsWith('image/')){
+          const directLink = `https://drive.google.com/uc?export=view&id=${file.id}`;
           const img = document.createElement('img');
-          img.src = file.thumbnailLink || file.webContentLink;
+          img.src = directLink;
           img.className = 'thumbnail';
           img.alt = file.name;
-          // link directo para modal y descarga
-          const directLink = `https://drive.google.com/uc?export=view&id=${file.id}`;
           img.onclick = ()=>showModal(directLink);
           track.appendChild(img);
         }
       }
-      // si hay más fotos
       if(data.files.length>MAX_VISIBLE){
         const more = document.createElement('div');
         more.className='thumbnail more';
@@ -188,7 +186,7 @@ function showModal(src){
   const modalImg = document.getElementById('modal-img');
   modal.style.display='flex';
   modalImg.src=src;
-  // abrir en nueva pestaña al hacer clic en la imagen grande
+  // clic abre imagen en nueva pestaña para descargar
   modalImg.onclick = ()=>window.open(src,'_blank');
 }
 document.getElementById('close').onclick = ()=>{document.getElementById('modal').style.display='none';};
