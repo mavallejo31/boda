@@ -93,18 +93,6 @@ header p { font-family:'CorporateA', sans-serif; margin-top:10px; font-size:1.1e
 }
 .carousel-btn.left { left:5px; }
 .carousel-btn.right { right:5px; }
-
-/* Modal */
-.modal {
-  display:none;
-  position:fixed;
-  top:0; left:0; width:100%; height:100%;
-  background: rgba(0,0,0,0.8);
-  justify-content:center; align-items:center;
-  z-index:1000;
-}
-.modal img { max-width:90%; max-height:90%; border-radius:10px; cursor:pointer; }
-.close-modal { position:absolute; top:20px; right:20px; font-size:30px; color:white; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -123,19 +111,13 @@ header p { font-family:'CorporateA', sans-serif; margin-top:10px; font-size:1.1e
   <button class="carousel-btn right">&#10095;</button>
 </div>
 
-<!-- Modal -->
-<div class="modal" id="modal">
-  <span class="close-modal" id="close">&times;</span>
-  <img id="modal-img" src="">
-</div>
-
 <script>
 const API_KEY = 'AIzaSyDJGBRvLKdukuVxWXvuRImB-C9pk6ZVDZM';
 const FOLDER_ID = '19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG';
 const MAX_VISIBLE = 8;
 
 async function fetchFiles() {
-  const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,mimeType)`;
+  const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,mimeType,thumbnailLink,webContentLink)`;
   try {
     const res = await fetch(url);
     const data = await res.json();
@@ -147,21 +129,23 @@ async function fetchFiles() {
       for(let i=0;i<visibleCount;i++){
         const file = data.files[i];
         if(file.mimeType.startsWith('image/')){
-          const directLink = `https://drive.google.com/uc?export=view&id=${file.id}`;
+          const link = document.createElement('a');
+          link.href = `https://drive.google.com/uc?export=view&id=${file.id}`;
+          link.target = "_blank"; // abre en nueva pestaña
           const img = document.createElement('img');
-          img.src = directLink;
+          img.src = file.thumbnailLink || `https://drive.google.com/uc?export=view&id=${file.id}`;
           img.className = 'thumbnail';
           img.alt = file.name;
-          img.onclick = ()=>showModal(directLink);
-          track.appendChild(img);
+          link.appendChild(img);
+          track.appendChild(link);
         }
       }
+      // si hay más fotos
       if(data.files.length>MAX_VISIBLE){
         const more = document.createElement('div');
         more.className='thumbnail more';
         more.setAttribute('data-more', `+${data.files.length-MAX_VISIBLE}`);
-        const nextLink = `https://drive.google.com/uc?export=view&id=${data.files[MAX_VISIBLE].id}`;
-        more.onclick = ()=>showModal(nextLink);
+        more.onclick = ()=>window.open(`https://drive.google.com/uc?export=view&id=${data.files[MAX_VISIBLE].id}`, '_blank');
         track.appendChild(more);
       }
     }
@@ -179,17 +163,6 @@ document.querySelector('.carousel-btn.left').onclick = ()=>{
 document.querySelector('.carousel-btn.right').onclick = ()=>{
   scrollPos += 100; track.style.transform = `translateX(${scrollPos}px)`;
 };
-
-// Modal
-function showModal(src){
-  const modal = document.getElementById('modal');
-  const modalImg = document.getElementById('modal-img');
-  modal.style.display='flex';
-  modalImg.src=src;
-  // clic abre imagen en nueva pestaña para descargar
-  modalImg.onclick = ()=>window.open(src,'_blank');
-}
-document.getElementById('close').onclick = ()=>{document.getElementById('modal').style.display='none';};
 
 // Inicia
 fetchFiles();
