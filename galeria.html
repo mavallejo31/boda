@@ -1,35 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Galería - Marilyn & Christian</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #faf7f7;
-      color: #333;
-      text-align: center;
-    }
-
-    header {
-      background: linear-gradient(135deg, #5c0a0d, #8c1c1c);
-      color: white;
-      padding: 50px 20px 100px 20px;
-      border-bottom-left-radius: 50% 10%;
-      border-bottom-right-radius: 50% 10%;
-      position: relative;
-      overflow: hidden;
-    }
-
+    /* Fuentes */
     @font-face {
       font-family: 'HolyWingsFree';
       src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff2') format('woff2'),
            url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff') format('woff');
     }
-
     @font-face {
       font-family: 'CorporateA';
       src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/CorporateA-Regular.woff2') format('woff2'),
@@ -37,7 +19,6 @@
       font-weight: normal;
       font-style: normal;
     }
-
     @font-face {
       font-family: 'BelfastBold';
       src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/Belfast-Bold.woff2') format('woff2'),
@@ -46,6 +27,23 @@
       font-style: normal;
     }
 
+    /* Estilos generales */
+    body {
+      margin:0; padding:20px;
+      font-family:'CorporateA', sans-serif;
+      background:#faf7f7;
+      color:#333;
+      text-align:center;
+    }
+    header {
+      background: linear-gradient(135deg, #5c0a0d, #8c1c1c);
+      color:white;
+      padding:50px 20px 100px 20px;
+      border-bottom-left-radius:50% 10%;
+      border-bottom-right-radius:50% 10%;
+      position: relative;
+      overflow: hidden;
+    }
     .titulo-principal {
       font-family: 'HolyWingsFree', cursive;
       font-size: 6em;
@@ -54,14 +52,13 @@
       margin: 0;
       font-weight: 300;
     }
-
     .subtitulo-destacado {
       font-family: 'BelfastBold', sans-serif;
       font-size: 1.7em;
       color: #c9a66b;
       font-weight: bold;
+      margin:10px 0 0 0;
     }
-
     .mensaje-bienvenida {
       font-family: 'CorporateA', sans-serif;
       font-size: 1.2em;
@@ -81,20 +78,17 @@
       animation: fadeIn 1.5s ease-in-out;
       font-family: 'CorporateA', sans-serif;
     }
-
     .card h2 {
       color: #5c0a0d;
       font-family: 'BelfastBold', sans-serif;
       font-size: 1.7em;
       margin-bottom: 15px;
     }
-
     .card p {
       font-size: 1.1em;
       color: #555;
       line-height: 1.6;
     }
-
     .btn {
       display: inline-block;
       margin-top: 20px;
@@ -109,34 +103,108 @@
       font-family: 'CorporateA', sans-serif;
       font-size: 1.1em;
     }
-
-    .btn:hover {
-      background: #5c0a0d;
-    }
+    .btn:hover { background: #5c0a0d; }
 
     footer {
       margin: 40px 20px;
       color: #555;
       font-family: 'CorporateA', sans-serif;
     }
-
     footer a {
       color: #8c1c1c;
       font-weight: 600;
       text-decoration: none;
     }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
+    footer a:hover { text-decoration: underline; }
 
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(20px);}
       to {opacity: 1; transform: translateY(0);}
     }
+
+    /* Carrusel */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 20px auto 0 auto;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.3s ease;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .carousel-track::-webkit-scrollbar { display: none; }
+
+    .thumbnail {
+      flex: 0 0 auto;
+      width: 80px;
+      height: 80px;
+      margin: 0 5px;
+      border-radius: 8px;
+      object-fit: cover;
+      cursor: pointer;
+      position: relative;
+    }
+    .thumbnail.more::after {
+      content: attr(data-more);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(140,28,28,0.8);
+      border: none;
+      color: white;
+      font-size: 24px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      z-index: 10;
+    }
+    .carousel-btn.left { left: 5px; }
+    .carousel-btn.right { right: 5px; }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px; right: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+
   <header>
     <h1 class="titulo-principal">Marilyn y Christian</h1>
     <h2 class="subtitulo-destacado">GALERÍA DE RECUERDOS</h2>
@@ -149,10 +217,82 @@
     <h2>📷 ¡Comparte tus fotos!</h2>
     <p>Sube tus recuerdos de la boda a nuestro álbum compartido.</p>
     <a class="btn" href="https://drive.google.com/drive/folders/19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG?usp=sharing" target="_blank">Subir mis fotos</a>
+
+    <!-- Carrusel -->
+    <div class="carousel-container">
+      <button class="carousel-btn left">&#10094;</button>
+      <div class="carousel-track" id="carousel"></div>
+      <button class="carousel-btn right">&#10095;</button>
+    </div>
   </section>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <span class="close-modal" id="close">&times;</span>
+    <img id="modal-img" src="">
+  </div>
 
   <footer>
     <p><a href="index.html">⬅ Volver a la invitación</a></p>
   </footer>
+
+  <script>
+    const API_KEY = 'AIzaSyDJGBRvLKdukuVxWXvuRImB-C9pk6ZVDZM';
+    const FOLDER_ID = '19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG';
+    const MAX_VISIBLE = 8;
+
+    async function fetchFiles() {
+      const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,mimeType,thumbnailLink,webContentLink)`;
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const track = document.getElementById('carousel');
+        track.innerHTML = '';
+
+        if(data.files && data.files.length>0){
+          let visibleCount = Math.min(MAX_VISIBLE, data.files.length);
+          for(let i=0;i<visibleCount;i++){
+            const file = data.files[i];
+            if(file.mimeType.startsWith('image/')){
+              const img = document.createElement('img');
+              img.src = file.thumbnailLink || file.webContentLink;
+              img.className = 'thumbnail';
+              img.alt = file.name;
+              img.onclick = ()=>showModal(file.webContentLink);
+              track.appendChild(img);
+            }
+          }
+          if(data.files.length>MAX_VISIBLE){
+            const more = document.createElement('div');
+            more.className='thumbnail more';
+            more.setAttribute('data-more', `+${data.files.length-MAX_VISIBLE}`);
+            more.onclick = ()=>showModal(data.files[MAX_VISIBLE].webContentLink);
+            track.appendChild(more);
+          }
+        }
+      } catch(err){ console.error(err); }
+    }
+
+    // Botones del carrusel
+    const track = document.getElementById('carousel');
+    let scrollPos = 0;
+    document.querySelector('.carousel-btn.left').onclick = ()=>{
+      track.scrollBy({ left: -200, behavior: 'smooth' });
+    };
+    document.querySelector('.carousel-btn.right').onclick = ()=>{
+      track.scrollBy({ left: 200, behavior: 'smooth' });
+    };
+
+    // Modal
+    function showModal(src){
+      document.getElementById('modal').style.display='flex';
+      document.getElementById('modal-img').src=src;
+    }
+    document.getElementById('close').onclick = ()=>{document.getElementById('modal').style.display='none';};
+
+    // Carga inicial
+    fetchFiles();
+  </script>
+
 </body>
 </html>
