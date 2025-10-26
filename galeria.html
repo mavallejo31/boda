@@ -1,240 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Galería - Marilyn & Christian</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Galería Boda Marilyn & Christian</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #faf7f7;
-      color: #333;
-      text-align: center;
-    }
+<style>
+/* Fuentes */
+@font-face { font-family: 'HolyWingsFree'; src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'CorporateA'; src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/CorporateA-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'BelfastBold'; src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/Belfast-Bold.woff2') format('woff2'); }
 
-    header {
-      background: linear-gradient(135deg, #5c0a0d, #8c1c1c);
-      color: white;
-      padding: 50px 20px 100px 20px;
-      border-bottom-left-radius: 50% 10%;
-      border-bottom-right-radius: 50% 10%;
-      position: relative;
-      overflow: hidden;
-    }
+/* Estilos generales */
+body {
+  margin:0; padding:20px;
+  font-family:'CorporateA', sans-serif;
+  background:#faf7f7;
+  color:#333;
+  text-align:center;
+}
+header {
+  background: linear-gradient(135deg, #5c0a0d, #8c1c1c);
+  color:white;
+  padding:40px 20px 80px 20px;
+  border-bottom-left-radius:50% 10%;
+  border-bottom-right-radius:50% 10%;
+}
+header h1 { font-family:'HolyWingsFree', cursive; font-size:4em; margin:0; }
+header h2 { font-family:'BelfastBold', sans-serif; color:#c9a66b; margin:10px 0 0 0; font-size:1.5em; }
+header p { font-family:'CorporateA', sans-serif; margin-top:10px; font-size:1.1em; }
 
-    @font-face {
-      font-family: 'HolyWingsFree';
-      src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff2') format('woff2'),
-           url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/HollyWingsFree-Regular.woff') format('woff');
-    }
+.btn-upload {
+  display:inline-block;
+  background:#8c1c1c;
+  color:white;
+  padding:12px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  margin:20px 0;
+  font-family:'CorporateA', sans-serif;
+}
 
-    @font-face {
-      font-family: 'CorporateA';
-      src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/CorporateA-Regular.woff2') format('woff2'),
-           url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/CorporateA-Regular.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
-    }
+/* Carrusel de miniaturas */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto 30px auto;
+}
+.carousel-track {
+  display:flex;
+  transition: transform 0.3s ease-in-out;
+}
+.thumbnail {
+  flex: 0 0 auto;
+  width: 80px;
+  height: 80px;
+  margin: 0 5px;
+  border-radius:8px;
+  object-fit:cover;
+  cursor:pointer;
+  position: relative;
+}
+.thumbnail.more::after {
+  content: attr(data-more);
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+  color:#fff;
+  font-size:16px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:8px;
+}
 
-    @font-face {
-      font-family: 'BelfastBold';
-      src: url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/Belfast-Bold.woff2') format('woff2'),
-           url('https://raw.githubusercontent.com/mavallejo31/boda/main/fonts/Belfast-Bold.woff') format('woff');
-      font-weight: bold;
-      font-style: normal;
-    }
+/* Botones */
+.carousel-btn {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background: rgba(140,28,28,0.8);
+  border:none;
+  color:white;
+  font-size:24px;
+  padding:5px 10px;
+  cursor:pointer;
+  border-radius:8px;
+  z-index:10;
+}
+.carousel-btn.left { left:5px; }
+.carousel-btn.right { right:5px; }
 
-    .titulo-principal {
-      font-family: 'HolyWingsFree', cursive;
-      font-size: 6em;
-      color: #fff;
-      letter-spacing: 2px;
-      margin: 0;
-      font-weight: 300;
-    }
-
-    .subtitulo-destacado {
-      font-family: 'BelfastBold', sans-serif;
-      font-size: 1.7em;
-      color: #c9a66b;
-      font-weight: bold;
-    }
-
-    .mensaje-bienvenida {
-      font-family: 'CorporateA', sans-serif;
-      font-size: 1.2em;
-      line-height: 1.5;
-      color: #fff;
-      margin-top: 15px;
-    }
-
-    /* Tarjeta contenedora */
-    .card {
-      margin: 40px auto;
-      padding: 30px 25px;
-      max-width: 420px;
-      background: white;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      animation: fadeIn 1.5s ease-in-out;
-      font-family: 'CorporateA', sans-serif;
-    }
-
-    .card h2 {
-      color: #5c0a0d;
-      font-family: 'BelfastBold', sans-serif;
-      font-size: 1.7em;
-      margin-bottom: 15px;
-    }
-
-    .card p {
-      font-size: 1.1em;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 30px;
-      background: #8c1c1c;
-      color: white;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-      cursor: pointer;
-      font-family: 'CorporateA', sans-serif;
-      font-size: 1.1em;
-    }
-
-    .btn:hover {
-      background: #5c0a0d;
-    }
-
-    footer {
-      margin: 40px 20px;
-      color: #555;
-      font-family: 'CorporateA', sans-serif;
-    }
-
-    footer a {
-      color: #8c1c1c;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    /* Carrusel de miniaturas */
-    .carousel-container {
-      position: relative;
-      overflow: hidden;
-      max-width: 100%;
-      margin: 30px auto;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.3s ease-in-out;
-      padding: 10px;
-    }
-
-    .thumbnail {
-      flex: 0 0 auto;
-      width: 80px;
-      height: 80px;
-      margin: 0 5px;
-      border-radius: 8px;
-      object-fit: cover;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .thumbnail.more::after {
-      content: attr(data-more);
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      font-size: 16px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 8px;
-    }
-
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(140,28,28,0.8);
-      border: none;
-      color: white;
-      font-size: 24px;
-      padding: 5px 10px;
-      cursor: pointer;
-      border-radius: 8px;
-      z-index: 10;
-    }
-    .carousel-btn.left { left: 5px; }
-    .carousel-btn.right { right: 5px; }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .modal img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 20px; right: 20px;
-      font-size: 30px;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
+/* Modal */
+.modal {
+  display:none;
+  position:fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.8);
+  justify-content:center; align-items:center;
+  z-index:1000;
+}
+.modal img { max-width:90%; max-height:90%; border-radius:10px; cursor:pointer; }
+.close-modal { position:absolute; top:20px; right:20px; font-size:30px; color:white; cursor:pointer; }
+</style>
 </head>
 <body>
 
 <header>
-  <h1 class="titulo-principal">Marilyn y Christian</h1>
-  <h2 class="subtitulo-destacado">GALERÍA DE RECUERDOS</h2>
-  <div class="mensaje-bienvenida">
-    Queremos revivir este día tan especial a través de tus fotos 💕
-  </div>
+  <h1>Marilyn y Christian</h1>
+  <h2>GALERÍA DE RECUERDOS</h2>
+  <p>Queremos revivir este día tan especial a través de tus fotos 💕</p>
 </header>
 
-<section class="card">
-  <h2>📷 ¡Comparte tus fotos!</h2>
-  <p>Sube tus recuerdos de la boda a nuestro álbum compartido.</p>
-  <a class="btn" href="https://drive.google.com/drive/folders/19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG?usp=sharing" target="_blank">Subir mis fotos</a>
-</section>
+<a class="btn-upload" href="https://drive.google.com/drive/folders/19KKsLe-Ml0mgvpGnHcvA5Wip-GmBX8qG" target="_blank">Agregar fotos</a>
 
-<!-- Carrusel -->
 <div class="carousel-container">
   <button class="carousel-btn left">&#10094;</button>
   <div class="carousel-track" id="carousel"></div>
@@ -246,10 +128,6 @@
   <span class="close-modal" id="close">&times;</span>
   <img id="modal-img" src="">
 </div>
-
-<footer>
-  <p><a href="index.html">⬅ Volver a la invitación</a></p>
-</footer>
 
 <script>
 const API_KEY = 'AIzaSyDJGBRvLKdukuVxWXvuRImB-C9pk6ZVDZM';
@@ -264,24 +142,28 @@ async function fetchFiles() {
     const track = document.getElementById('carousel');
     track.innerHTML = '';
 
-    if(data.files && data.files.length > 0){
+    if(data.files && data.files.length>0){
       let visibleCount = Math.min(MAX_VISIBLE, data.files.length);
-      for(let i = 0; i < visibleCount; i++){
+      for(let i=0;i<visibleCount;i++){
         const file = data.files[i];
         if(file.mimeType.startsWith('image/')){
           const img = document.createElement('img');
           img.src = file.thumbnailLink || file.webContentLink;
           img.className = 'thumbnail';
           img.alt = file.name;
-          img.onclick = () => showModal(file.webContentLink);
+          // link directo para modal y descarga
+          const directLink = `https://drive.google.com/uc?export=view&id=${file.id}`;
+          img.onclick = ()=>showModal(directLink);
           track.appendChild(img);
         }
       }
-      if(data.files.length > MAX_VISIBLE){
+      // si hay más fotos
+      if(data.files.length>MAX_VISIBLE){
         const more = document.createElement('div');
-        more.className = 'thumbnail more';
-        more.setAttribute('data-more', `+${data.files.length - MAX_VISIBLE}`);
-        more.onclick = () => showModal(data.files[MAX_VISIBLE].webContentLink);
+        more.className='thumbnail more';
+        more.setAttribute('data-more', `+${data.files.length-MAX_VISIBLE}`);
+        const nextLink = `https://drive.google.com/uc?export=view&id=${data.files[MAX_VISIBLE].id}`;
+        more.onclick = ()=>showModal(nextLink);
         track.appendChild(more);
       }
     }
@@ -291,12 +173,12 @@ async function fetchFiles() {
 }
 
 // Carrusel simple
-let scrollPos = 0;
+let scrollPos=0;
 const track = document.getElementById('carousel');
-document.querySelector('.carousel-btn.left').onclick = () => {
+document.querySelector('.carousel-btn.left').onclick = ()=>{
   scrollPos -= 100; track.style.transform = `translateX(${scrollPos}px)`;
 };
-document.querySelector('.carousel-btn.right').onclick = () => {
+document.querySelector('.carousel-btn.right').onclick = ()=>{
   scrollPos += 100; track.style.transform = `translateX(${scrollPos}px)`;
 };
 
@@ -304,15 +186,15 @@ document.querySelector('.carousel-btn.right').onclick = () => {
 function showModal(src){
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modal-img');
-  modal.style.display = 'flex';
-  modalImg.src = src;
-  modalImg.onclick = () => window.open(src, '_blank');
+  modal.style.display='flex';
+  modalImg.src=src;
+  // abrir en nueva pestaña al hacer clic en la imagen grande
+  modalImg.onclick = ()=>window.open(src,'_blank');
 }
-document.getElementById('close').onclick = () => { document.getElementById('modal').style.display='none'; };
+document.getElementById('close').onclick = ()=>{document.getElementById('modal').style.display='none';};
 
 // Inicia
 fetchFiles();
 </script>
-
 </body>
 </html>
